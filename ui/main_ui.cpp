@@ -1,10 +1,12 @@
 //this is main ui
 #include<iostream>
 #include<fstream>
+#include<string>
+#include "functions.cpp"
+#include "class.cpp"
 using namespace std;
-system ("clear");
 int main(void)
-{
+{	system("clear");
 	int choice;
 
 	//there will be four modes
@@ -18,19 +20,27 @@ int main(void)
 
 	cout<<"ENTER YOUR CHOICE : "<<endl;
 	cin>>choice;
-	if(choice==1)
-	//patient_ui
-	else if(choice==2)
+	switch(choice)
+	{
+	case 1:	
+	#include "patient_ui.cpp"
+			break;
+	
+	case 2:
 	#include "login.cpp"
-	else if(choice==3)
+			break;
+				
+	case 3:
 	#include "login.cpp"
-	else if(choice==4)
-	//FAQs
-	else if(choice==5)
-		//contact details
-	else 
-		//exit
-
+			break;
+			
+	case 4://FAQs
+			break;
+			
+	case 5:	//contact details
+			break;
+	default: //exit(0);
+}
 
 return 0;
 }

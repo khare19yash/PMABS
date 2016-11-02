@@ -1,4 +1,8 @@
+system("clear");
+string username;
+string password;
 cout<<"Username : "<<endl;
-//input username
+cin>>username;
 cout<<"Password : "<<endl;
-// input password
+cin>>password;
+check_username_password(username,password);
