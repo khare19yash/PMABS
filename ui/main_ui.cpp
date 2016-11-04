@@ -6,7 +6,7 @@
 using namespace std;
 #include "class.cpp"
 #include "functions.cpp"
-#include "login.cpp"
+//#include "login.cpp"
 int main(void)
 {	system("clear");
 	int choice;
@@ -46,10 +46,10 @@ int main(void)
 	default: //exit(0);*/
 }
 
-/*fstream f2;
-f2.open("counter",ios::out);
+fstream f2;
+f2.open("counter.csv",ios::out);
 f2<<Patient::count;
-f2.close();*/
+f2.close();
 return 0;
 }
 

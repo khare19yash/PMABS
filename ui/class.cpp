@@ -40,7 +40,8 @@ void Patient::set_value()
 	{
 	patient_id=count;
 	cout<<"Enter Your Name : "<<endl;
-	cin>>patient_name;
+	cin.ignore();
+	getline(cin,patient_name);
 	cout<<"Enter Your Gender (M/F) : "<<endl;
 	cin>>gender;
 	cout<<"Enter Your Age : "<<endl;

@@ -1,41 +1,62 @@
+void check_username_password(string,string);
+//login function
+void user_login()
+{
+string username;
+string password;
+cout<<"Username : "<<endl;
+cin>>username;
+cout<<"Password : "<<endl;
+cin>>password;
+//check_username_password(username,password);
+}
+
+
 //function to check username and password
 /*void check_username_password(string s, string p)
 {
-int flag=0;
-string uname,pass;
-fstream fhandle;
-fhandle.open("patient username password.csv", ios::in);
-while(fhandle)
-{
-getline(fhandle,uname, ' ,');
-if(uname.compare(s)==0)//compare the username
-{
-	flag=1;
-	break;
-}
-}
-fhandle.seekg(o,ios::cur);
-if(flag==1)//if both strings are equal
-{
-	getline(fhandle,pass)
-	if(pass.compare(p)==0)//compare the passwords
-	#include "patient_ui1.cpp"//if password matches include patient_ui file
+	int flag=0;
+	string id,uname,pass;
+	fstream fhandle;
+	fhandle.open("patients_userpass.csv", ios::in);
+	while(fhandle)
+	{
+		getline(fhandle,id,',');
+		getline(fhandle,uname,' ,');
+		getline(fhandle,pass,'\n');
+		if(uname.compare(s)==0)//compare the username
+		{
+			flag=1;
+			break;
+		}
+	}
+//fhandle.seekg(o,ios::cur);
+	if(flag==1)//if both strings are equal
+	{
+		//getline(fhandle,pass)
+		//compare the passwords
+		if(pass.compare(p)==0)
+		{
+		
+			#include "patient_ui1.cpp"   //if password matches include patient_ui file
+		
+		}
+		else
+		{
+			cout<<"Incorrect Password"<<endl;
+			cout<<endl;
+			user_login();
+		}	
+	}	
 	else
 	{
-		cout<<"Incorrect Password"<<endl;
-		cout<<endl;
+		cout<<"Invalid Username"<<endl;
 		user_login();
-	}	
-}
-else
-{
-	cout<<"Invalid Username"<<endl;
-	user_login();
 	
+	}
+
 }
-
-}*/
-
+*/
 
 //function to check if username already exists
 int unique_username(string s)
@@ -43,7 +64,7 @@ int unique_username(string s)
 	string uname,id,pass;
 	int flag=0;
 	fstream fhandle;
-	fhandle.open("patient username password", ios::in);
+	fhandle.open("patients_userpass.csv", ios::in);
 	while(fhandle)
 	{
 		getline(fhandle,id,',');
@@ -78,11 +99,12 @@ void insert_username_password(Patient ob)
 	{
 		cout<<"Enter Password : "<<endl;
 		cin>>password;
+		fstream fhandle1;
+		fhandle1.open("patients_userpass.csv",ios::app);
+		fhandle1<<ob.patient_id<<","<<username<<","<<password<<endl;
+		fhandle1.close();
 	}
-	fstream fhandle1;
-	fhandle1.open("patients_userpass.csv",ios::app);
-	fhandle1<<ob.patient_id<<","<<username<<","<<password<<endl;
-	fhandle1.close();
+	
 }
 
 

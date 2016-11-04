@@ -4,6 +4,7 @@ Patient ob;
 //calling set_vale function 
 ob.set_value();
 insert_username_password(ob);
+ob.insert_into_file();
 system("clear");
 user_login();
 
