@@ -2,9 +2,10 @@
 #include<iostream>
 #include<fstream>
 #include<string>
-#include "functions.cpp"
-#include "class.cpp"
 using namespace std;
+#include "class.cpp"
+#include "functions.cpp"
+#include "login.cpp"
 int main(void)
 {	system("clear");
 	int choice;
@@ -27,11 +28,13 @@ int main(void)
 			break;
 	
 	case 2:
-	#include "login.cpp"
+			system("clear");
+			user_login();
 			break;
 				
 	case 3:
-	#include "login.cpp"
+			system("clear");
+			user_login();
 			break;
 			
 	case 4://FAQs
@@ -42,6 +45,10 @@ int main(void)
 	default: //exit(0);
 }
 
+fstream f2;
+f2.open("counter",ios::out);
+f2<<Patient::count;
+f2.close();
 return 0;
 }
 

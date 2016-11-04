@@ -3,9 +3,9 @@
 class Hospital
 {
 public:
-	string  Hospital_name;
-	int number_of _patients;
+	string hospital_name;
 	string hospital_id;
+	virtual void set_value(){};
 };
 
 
@@ -21,10 +21,22 @@ class Patient
 	char gender;
 	int patient_id;
 	int age;
-	static int count;
+	
 public:
-	Patient(){count++; }
-	void set_value
+	static int count;
+	Patient()
+	{ 
+		fstream f1;
+		f1.open("counter.csv",ios::in);
+		f1>>count;
+		f1.close();
+		count++; 
+	}
+	void set_value();
+	friend void insert_username_password(Patient ob);
+	void insert_into_file();
+};
+void Patient::set_value()
 	{
 	patient_id=count;
 	cout<<"Enter Your Name : "<<endl;
@@ -42,7 +54,14 @@ public:
 	}
 //create a function to check if the username already exists
 	 //void unique_username(string);
-};
+
+void Patient::insert_into_file()
+{
+	fstream file;
+	file.open("outpatient.csv",ios::app);
+	file<<patient_id<<","<<patient_name<<","<<gender<<","<<age<<","<<blood_group<<","<<phone_number<<","<<email_id<<endl;
+	file.close();
+}
 
 //doctor class derived from hospital contains all details about doctors
 class Doctor:public Hospital
@@ -55,5 +74,5 @@ class Doctor:public Hospital
 	string password;
 };
 
-int patient::count=60;
+int Patient::count;
 

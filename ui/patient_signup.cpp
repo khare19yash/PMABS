@@ -1,7 +1,8 @@
 system("clear");
-//take a pointer of patient class
-Patient *p;
-//creating pointer to object of class patient
-p=new Patient;
+//create an object of patient class
+Patient ob;
 //calling set_vale function 
-p->setvalue();
+ob.set_value();
+insert_username_password(ob);
+user_login();
+
