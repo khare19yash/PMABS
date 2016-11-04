@@ -2,9 +2,10 @@
 #include<iostream>
 #include<fstream>
 #include<string>
+#include<cstring>
 using namespace std;
 #include "class.cpp"
-//#include "functions.cpp"
+#include "functions.cpp"
 #include "login.cpp"
 int main(void)
 {	system("clear");

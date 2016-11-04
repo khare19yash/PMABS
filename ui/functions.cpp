@@ -1,5 +1,5 @@
 //function to check username and password
-void check_username_password(string s, string p)
+/*void check_username_password(string s, string p)
 {
 int flag=0;
 string uname,pass;
@@ -34,19 +34,21 @@ else
 	
 }
 
-}
+}*/
 
 
 //function to check if username already exists
 int unique_username(string s)
 {
-	string uname;
+	string uname,id,pass;
 	int flag=0;
 	fstream fhandle;
 	fhandle.open("patient username password", ios::in);
 	while(fhandle)
 	{
+		getline(fhandle,id,',');
 		getline(fhandle,uname,',');
+		getline(fhandle,pass,'\n');
 		if(uname.compare(s)==0)
 		{
 			flag=1;
@@ -70,7 +72,7 @@ void insert_username_password(Patient ob)
 	{
 		cout<<"Username already exists"<<endl;
 		cout<<endl;
-		insert_username_password();
+		insert_username_password(ob);
 	}
 	else
 	{
@@ -78,14 +80,14 @@ void insert_username_password(Patient ob)
 		cin>>password;
 	}
 	fstream fhandle1;
-	fhandle1.open("patient username password.csv",ios::ate);
-	fhandle<<ob.patient_id<<","<<username<<","<<password<<endl;
+	fhandle1.open("patients_userpass.csv",ios::app);
+	fhandle1<<ob.patient_id<<","<<username<<","<<password<<endl;
 	fhandle1.close();
 }
 
 
 //function to check hospital id
-void check_hospital_id(string s)
+/*void check_hospital_id(string s)
 {
 	string id;
 	fstream fhandle;
@@ -104,5 +106,5 @@ void check_hospital_id(string s)
 	//you have selected the following hospital
 	else
 	cout<<"Invalid Hospital Id"<<endl;
-}
+}*/
 
