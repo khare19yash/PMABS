@@ -1,12 +1,12 @@
 
 //create a base class hospital
-class Hospital
+/*class Hospital
 {
 public:
 	string hospital_name;
 	string hospital_id;
 	virtual void set_value(){};
-};
+};*/
 
 
 
@@ -40,7 +40,7 @@ void Patient::set_value()
 	{
 	patient_id=count;
 	cout<<"Enter Your Name : "<<endl;
-	getline(cin, patient_name);
+	getline(cin,patient_name);
 	cout<<"Enter Your Gender (M/F) : "<<endl;
 	cin>>gender;
 	cout<<"Enter Your Age : "<<endl;
@@ -64,7 +64,7 @@ void Patient::insert_into_file()
 }
 
 //doctor class derived from hospital contains all details about doctors
-class Doctor:public Hospital
+/*class Doctor:public Hospital
 {
 	int room_number;
 	string department;
@@ -72,7 +72,7 @@ class Doctor:public Hospital
 	string days;
 	string username;
 	string password;
-};
+};*/
 
 int Patient::count;
 

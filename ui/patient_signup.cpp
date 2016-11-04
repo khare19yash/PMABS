@@ -3,6 +3,7 @@ system("clear");
 Patient ob;
 //calling set_vale function 
 ob.set_value();
-insert_username_password(ob);
-user_login();
+/*insert_username_password(ob);
+system("clear");
+user_login();*/
 

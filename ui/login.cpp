@@ -6,5 +6,5 @@ cout<<"Username : "<<endl;
 cin>>username;
 cout<<"Password : "<<endl;
 cin>>password;
-check_username_password(username,password);
+//check_username_password(username,password);
 }

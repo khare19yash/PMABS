@@ -4,7 +4,7 @@
 #include<string>
 using namespace std;
 #include "class.cpp"
-#include "functions.cpp"
+//#include "functions.cpp"
 #include "login.cpp"
 int main(void)
 {	system("clear");
@@ -32,7 +32,7 @@ int main(void)
 			user_login();
 			break;
 				
-	case 3:
+	/*case 3:
 			system("clear");
 			user_login();
 			break;
@@ -42,13 +42,13 @@ int main(void)
 			
 	case 5:	//contact details
 			break;
-	default: //exit(0);
+	default: //exit(0);*/
 }
 
-fstream f2;
+/*fstream f2;
 f2.open("counter",ios::out);
 f2<<Patient::count;
-f2.close();
+f2.close();*/
 return 0;
 }
 
