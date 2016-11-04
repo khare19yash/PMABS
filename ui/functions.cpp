@@ -1,6 +1,6 @@
-void check_username_password(string,string);
+//void check_username_password(string,string);
 //login function
-void user_login()
+/*void user_login()
 {
 string username;
 string password;
@@ -8,8 +8,8 @@ cout<<"Username : "<<endl;
 cin>>username;
 cout<<"Password : "<<endl;
 cin>>password;
-//check_username_password(username,password);
-}
+check_username_password(username,password);
+}*/
 
 
 //function to check username and password
@@ -31,7 +31,7 @@ cin>>password;
 		}
 	}
 //fhandle.seekg(o,ios::cur);
-	if(flag==1)//if both strings are equal
+	/*if(flag==1)//if both strings are equal
 	{
 		//getline(fhandle,pass)
 		//compare the passwords
@@ -53,10 +53,15 @@ cin>>password;
 		cout<<"Invalid Username"<<endl;
 		user_login();
 	
+	}*/
+	/*if(flag==1)
+	{
+		//#include "patient_ui1.cpp"
+		cout<<"hi"<<endl;
 	}
 
-}
-*/
+}*/
+
 
 //function to check if username already exists
 int unique_username(string s)
@@ -76,6 +81,7 @@ int unique_username(string s)
 			break;
 		}
 	}
+	fhandle.close();
 	if(flag==1)
 	return 1;
 	else 
@@ -98,6 +104,7 @@ void insert_username_password(Patient ob)
 	else
 	{
 		cout<<"Enter Password : "<<endl;
+		cin.ignore();
 		cin>>password;
 		fstream fhandle1;
 		fhandle1.open("patients_userpass.csv",ios::app);

@@ -4,12 +4,13 @@
 #include<string>
 #include<cstring>
 using namespace std;
+int choice;
 #include "class.cpp"
 #include "functions.cpp"
-//#include "login.cpp"
+#include "login.cpp"
 int main(void)
 {	system("clear");
-	int choice;
+	
 
 	//there will be four modes
 	//user can select any one of the modes
@@ -25,13 +26,17 @@ int main(void)
 	switch(choice)
 	{
 	case 1:	
-	#include "patient_ui.cpp"
+		{
+			#include "patient_ui.cpp"
 			break;
+		}
 	
 	case 2:
+		{
 			system("clear");
 			user_login();
 			break;
+		}
 				
 	/*case 3:
 			system("clear");

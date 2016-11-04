@@ -60,6 +60,7 @@ void Patient::insert_into_file()
 {
 	fstream file;
 	file.open("outpatient.csv",ios::app);
+	cin.ignore();
 	file<<patient_id<<","<<patient_name<<","<<gender<<","<<age<<","<<blood_group<<","<<phone_number<<","<<email_id<<endl;
 	file.close();
 }
