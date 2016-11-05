@@ -1,3 +1,4 @@
+void patient_ui1(string);
 //void check_username_password(string,string);
 //login function
 /*void user_login()
@@ -291,8 +292,12 @@ string show_date()
 }
 
 //function to book appointment
-void book_appointment()
+void book_appointment(string p,string q,string r,string s)
 {
+	string uhid=s;
+	string hname,hid;
+	string did,dname,depart,timing,hid1;
+	string pid,pname,g,a,bgroup,phone,mail;
 	char value;
 	cout<<"Confirm Appointment (y/n)"<<endl;
 	cin>>value;
@@ -300,11 +305,65 @@ void book_appointment()
 	{
 		case 'y':
 		{
-
+			fstream fhandle;
+			fhandle.open("hospital_list.csv",ios::in);
+			while(fhandle)
+			{
+				getline(fhandle,hname,',');
+				getline(fhandle,hid,'\n');
+				if(p.compare(hid)==0)
+				break;
+				else
+				continue;
+			}
+			fhandle.close();
+			fhandle.open("doctorslist.csv",ios::in);
+			while(fhandle)
+			{
+				getline(fhandle,did,',');
+				getline(fhandle,dname,',');
+				getline(fhandle,depart,',');
+				getline(fhandle,timing,',');
+				getline(fhandle,hid1,'\n');
+				if(q.compare(did)==0)
+				break;
+				else
+				continue;
+			}
+			fhandle.close();
+			fhandle.open("outpatient.csv",ios::in);
+			while(fhandle)
+			{
+				getline(fhandle,pid,',');
+				getline(fhandle,pname,',');
+				getline(fhandle,g,',');
+				getline(fhandle,a,',');
+				getline(fhandle,bgroup,',');
+				getline(fhandle,phone,',');
+				getline(fhandle,mail,'\n');
+				if(s.compare(pid)==0)
+				break;
+				else 
+				continue;
+			}
+			fhandle.close();
+			system("cls");
+			cout<<"Appointment Booked"<<endl;
+			cout<<"Patient Name : "<<pname<<endl;
+			cout<<"Patient Id : "<<s<<endl;
+			cout<<"Hospital Name : "<<hname<<endl;
+			cout<<"Doctor Name : "<<dname<<endl;
+			cout<<"Appointment Date : "<<r<<endl;
+			break;
 		}
 		case 'n':
 		{
-			#include "patient_ui1.cpp"
+			patient_ui1(uhid);
+			break;
+		}
+		default:
+		{
+			cout<<"Invalid Input"<<endl;
 		}
 	}
 

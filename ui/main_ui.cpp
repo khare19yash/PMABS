@@ -10,6 +10,8 @@ int choice;
 #include "class.cpp"
 #include "functions.cpp"
 #include "login.cpp"
+#include "patient_ui1.cpp"
+#include "patient_ui2.cpp"
 int main(void)
 {	system("cls");
 	

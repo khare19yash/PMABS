@@ -1,3 +1,4 @@
+void patient_ui1(string);
 void user_login()
 {
 string username;
@@ -9,7 +10,21 @@ cin>>password;
 //check_username_password(username,password);
 if(unique_username(username)==1)
 {
-	#include "patient_ui1.cpp"
+	string uhid,uname,pass;
+	fstream fhandle;
+	fhandle.open("patients_userpass.csv",ios::in);
+	while(fhandle)
+	{
+		getline(fhandle,uhid,',');
+		getline(fhandle,uname,',');
+		getline(fhandle,pass,'\n');
+		if(username.compare(uname)==0)
+		break;
+		else
+		continue;
+	}
+	fhandle.close();
+	patient_ui1(uhid);
 }
 /*if(check_username_password(username,password)==2)
 {
