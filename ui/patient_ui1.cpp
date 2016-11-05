@@ -1,4 +1,4 @@
-system("clear");
+system("cls");
 cout<<"1. Book Appointment"<<endl;
 cout<<"2. Cancel Appointment"<<endl;
 cout<<"3. View Details"<<endl;

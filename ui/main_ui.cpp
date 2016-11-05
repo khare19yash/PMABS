@@ -4,13 +4,14 @@
 #include<string>
 #include<iomanip>
 #include<cstring>
+#include<ctime>
 using namespace std;
 int choice;
 #include "class.cpp"
 #include "functions.cpp"
 #include "login.cpp"
 int main(void)
-{	system("clear");
+{	system("cls");
 	
 
 	//there will be four modes
@@ -34,7 +35,7 @@ int main(void)
 	
 	case 2:
 		{
-			system("clear");
+			system("cls");
 			user_login();
 			break;
 		}

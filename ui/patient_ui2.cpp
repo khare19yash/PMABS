@@ -1,5 +1,5 @@
-system("clear");
-string hospital_name,hospital_id;
+system("cls");
+string hospital_name,hospital_id,doctor_id,appointment_date;
 int i=1;
 fstream fhandle;
 fhandle.open("hospital_list.csv", ios::in);
@@ -14,5 +14,8 @@ while(!fhandle.eof())
 }
 fhandle.close();
 hospital_id=get_hospital_id();
-dislay_doctor_list(hospital_id);
+display_doctor_list(hospital_id);
 doctor_id=get_doctor_id();
+cout<<"You can book appointment for these dates : "<<endl;
+appointment_date=show_date();
+

@@ -13,7 +13,7 @@ check_username_password(username,password);
 
 
 //function to check username and password
-/*void check_username_password(string s, string p)
+/*int check_username_password(string s, string p)
 {
 	int flag=0;
 	string id,uname,pass;
@@ -31,36 +31,29 @@ check_username_password(username,password);
 		}
 	}
 //fhandle.seekg(o,ios::cur);
-	/*if(flag==1)//if both strings are equal
+	if(flag==1)//if both strings are equal
 	{
 		//getline(fhandle,pass)
 		//compare the passwords
-		if(pass.compare(p)==0)
+		/*if(pass.compare(p)==0)
 		{
 		
-			#include "patient_ui1.cpp"   //if password matches include patient_ui file
+			return 0;   //if password matches include patient_ui file
 		
 		}
 		else
 		{
-			cout<<"Incorrect Password"<<endl;
-			cout<<endl;
-			user_login();
-		}	
-	}	
-	else
+			return 1;
+		}*/
+		//return 0;	
+	//}	
+	/*else
 	{
-		cout<<"Invalid Username"<<endl;
-		user_login();
+		return 2;
 	
 	}*/
-	/*if(flag==1)
-	{
-		//#include "patient_ui1.cpp"
-		cout<<"hi"<<endl;
-	}
 
-}*/
+//}
 
 
 //function to check if username already exists
@@ -163,6 +156,8 @@ void display_doctor_list(string s)
 {
 	string doctor_id,doctor_name;
 	string doctor_department,doctor_timing,id;
+	fstream fhandle;
+	fhandle.open("doctorslist.csv",ios::in);
 	while(fhandle)
 {
 	getline(fhandle,doctor_id,',');
@@ -172,7 +167,7 @@ void display_doctor_list(string s)
 	getline(fhandle,id,'\n');
 	if(s.compare(id)==0)
 	{
-		cout<<doctor_name<<"\t"<<doctor_department<<"\t"<<doctor_timing<<"\t"<<s<<endl;
+		cout<<doctor_id<<"\t"<<doctor_name<<"\t"<<doctor_department<<"\t"<<doctor_timing<<endl;
 	}
 }
 }
@@ -180,7 +175,7 @@ void display_doctor_list(string s)
 //function to check doctor id
 int check_doctor_id(string s)
 {
-	string id,name;
+	string id,name,department,timing,hid;
 	fstream fhandle;
 	int flag=0;
 	fhandle.open("doctorslist.csv",ios::in);
@@ -213,13 +208,74 @@ string get_doctor_id()
 {
 	string doctor_id;
 	cout<<"Enter Doctor Id : "<<endl;
-	cin>>hospital_id;
-	if(check_doctor_id(hospital_id)==1)
+	cin>>doctor_id;
+	if(check_doctor_id(doctor_id)==1)
 	{
 		cout<<"Invalid Doctor Id"<<endl;
 		get_doctor_id();
 	}
 	else
 	return doctor_id;	
+}
+
+//function to show dates 
+string show_date()
+{
+	time_t now=time(0);
+  struct tm * ltm=localtime(&now);
+  char day1[20],day2[20],day3[20],day4[20],day5[20],buffer[20];
+
+    ltm->tm_mday=ltm->tm_mday+1;
+    strftime (day1,20,"%Y-%m-%d",ltm);
+	cout<<"1. ";
+    puts(day1);
+     ltm->tm_mday=ltm->tm_mday+1;
+    strftime (day2,20,"%Y-%m-%d",ltm);
+	cout<<"2. ";
+    puts(day2);
+     ltm->tm_mday=ltm->tm_mday+1;
+    strftime (day3,20,"%Y-%m-%d",ltm);
+	cout<<"3. ";
+    puts(day3);
+     ltm->tm_mday=ltm->tm_mday+1;
+    strftime (day4,20,"%Y-%m-%d",ltm);
+	cout<<"4. ";
+    puts(day4);
+     ltm->tm_mday=ltm->tm_mday+1;
+    strftime (day5,20,"%Y-%m-%d",ltm);
+	cout<<"5. ";
+    puts(day5);
+	cout<<"Choose the Date of Appointment"<<endl;
+	cin>>choice;
+	switch(choice)
+	{
+		case 1: 
+		{
+			string st(day1);
+			return st;
+		}
+		case 2:
+		{
+			string st(day2);
+			return st;
+
+		}
+		case 3:
+		{
+			string st(day3);
+			return st;
+		}
+		case 4:
+		{
+			string st(day4);
+			return st;
+		}
+		case 5:
+		{
+			string st(day5);
+			return st;
+		}
+	}
+
 }
 
