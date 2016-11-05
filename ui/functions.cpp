@@ -139,13 +139,14 @@ int check_hospital_id(string s)
 //function to get hospital id
 string get_hospital_id()
 {
-	string hospital_id;
+	string hospital_id,s;
 	cout<<"Enter Hospital Id : "<<endl;
 	cin>>hospital_id;
 	if(check_hospital_id(hospital_id)==1)
 	{
 		cout<<"Invalid Hospital Id"<<endl;
-		get_hospital_id();
+		s=get_hospital_id();
+		return s;
 	}
 	else
 	return hospital_id;	
@@ -206,13 +207,14 @@ int check_doctor_id(string s)
 //function to get doctor id
 string get_doctor_id()
 {
-	string doctor_id;
+	string doctor_id,s;
 	cout<<"Enter Doctor Id : "<<endl;
 	cin>>doctor_id;
 	if(check_doctor_id(doctor_id)==1)
 	{
 		cout<<"Invalid Doctor Id"<<endl;
-		get_doctor_id();
+		s=get_doctor_id();
+		return s;
 	}
 	else
 	return doctor_id;	
@@ -253,29 +255,57 @@ string show_date()
 		{
 			string st(day1);
 			return st;
+			break;
 		}
 		case 2:
 		{
 			string st(day2);
 			return st;
+			break;
 
 		}
 		case 3:
 		{
 			string st(day3);
 			return st;
+			break;
 		}
 		case 4:
 		{
 			string st(day4);
 			return st;
+			break;
 		}
 		case 5:
 		{
 			string st(day5);
 			return st;
+			break;
+		}
+		default:
+		{
+			cout<<"Invalid Input"<<endl;
 		}
 	}
 
 }
 
+//function to book appointment
+void book_appointment()
+{
+	char value;
+	cout<<"Confirm Appointment (y/n)"<<endl;
+	cin>>value;
+	switch(value)
+	{
+		case 'y':
+		{
+
+		}
+		case 'n':
+		{
+			#include "patient_ui1.cpp"
+		}
+	}
+
+}

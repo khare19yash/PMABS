@@ -14,7 +14,7 @@ int main( )
 
        ltm->tm_mday=ltm->tm_mday+1;
        strftime (dt,20,"%Y-%m-%d",ltm);
-       puts(dt);
+       
    
    return 0;
 }
