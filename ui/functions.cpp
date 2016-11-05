@@ -116,24 +116,45 @@ void insert_username_password(Patient ob)
 
 
 //function to check hospital id
-/*void check_hospital_id(string s)
+void check_hospital_id(string s)
 {
-	string id;
+	string id,name;
 	fstream fhandle;
 	int flag=0;
-	fhandle.open("hospital_list",ios::in);
+	fhandle.open("hospital_list.csv",ios::in);
 	while(fhandle)
 	{
-		getline(fhandle,id,',');
-		if(id.compare(s)==0)
+		getline(fhandle,name,',');
+		getline(fhandle,id,'\n');
+		if(s.compare(id)==0)
 		{
 			flag=1;
 			break;
 		}
 	}
 	if(flag==1)
-	//you have selected the following hospital
+	{
+		cout<<"valid"<<endl;
+	}
+		
 	else
-	cout<<"Invalid Hospital Id"<<endl;
-}*/
+	{
+		cout<<"invalid"<<endl;
+	}
+}
 
+//function to get hospital id
+/*void get_hospital_id()
+{
+	string hospital_id;
+	cout<<"Enter Hospital Id : "<<endl;
+	cin>>hospital_id;
+	if(check_hospital_id(hospital_id)==1)
+	{
+		cout<<"Invalid Hospital Id"<<endl;
+		get_hospital_id();
+	}
+	else
+	cout<<"valid";
+	
+}*/
