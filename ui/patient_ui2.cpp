@@ -7,12 +7,12 @@ while(!fhandle.eof())
 {
 	getline(fhandle, hospital_name,',');
 	getline(fhandle, hospital_id,'\n');
-	cout<<i<<"."<<hospital_name<<" Id : "<<hospital_id<<endl;
+	cout<<setw(20)<<i<<"."<<hospital_name<<" Id : "<<hospital_id<<endl<<setfill('*');
 	i++;
 	if(i>6)
 	break;
 }
-cout<<"enter hospital id"<<endl;
-cin>>hospital_id;
-check_hospital_id(hospital_id);
-
+fhandle.close();
+hospital_id=get_hospital_id();
+dislay_doctor_list(hospital_id);
+doctor_id=get_doctor_id();

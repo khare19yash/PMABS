@@ -116,7 +116,7 @@ void insert_username_password(Patient ob)
 
 
 //function to check hospital id
-void check_hospital_id(string s)
+int check_hospital_id(string s)
 {
 	string id,name;
 	fstream fhandle;
@@ -134,17 +134,17 @@ void check_hospital_id(string s)
 	}
 	if(flag==1)
 	{
-		cout<<"valid"<<endl;
+		return 0;
 	}
 		
 	else
 	{
-		cout<<"invalid"<<endl;
+		return 1;
 	}
 }
 
 //function to get hospital id
-/*void get_hospital_id()
+string get_hospital_id()
 {
 	string hospital_id;
 	cout<<"Enter Hospital Id : "<<endl;
@@ -155,6 +155,71 @@ void check_hospital_id(string s)
 		get_hospital_id();
 	}
 	else
-	cout<<"valid";
-	
-}*/
+	return hospital_id;	
+}
+
+//function to display doctors list
+void display_doctor_list(string s)
+{
+	string doctor_id,doctor_name;
+	string doctor_department,doctor_timing,id;
+	while(fhandle)
+{
+	getline(fhandle,doctor_id,',');
+	getline(fhandle,doctor_name,',');
+	getline(fhandle,doctor_department,',');
+	getline(fhandle,doctor_timing,',');
+	getline(fhandle,id,'\n');
+	if(s.compare(id)==0)
+	{
+		cout<<doctor_name<<"\t"<<doctor_department<<"\t"<<doctor_timing<<"\t"<<s<<endl;
+	}
+}
+}
+
+//function to check doctor id
+int check_doctor_id(string s)
+{
+	string id,name;
+	fstream fhandle;
+	int flag=0;
+	fhandle.open("doctorslist.csv",ios::in);
+	while(fhandle)
+	{
+		getline(fhandle,id,',');
+		getline(fhandle,name,'.');
+		getline(fhandle,department,',');
+		getline(fhandle,timing,',');
+		getline(fhandle,hid,'\n');
+		if(s.compare(id)==0)
+		{
+			flag=1;
+			break;
+		}
+	}
+	if(flag==1)
+	{
+		return 0;
+	}
+		
+	else
+	{
+		return 1;
+	}
+}
+
+//function to get doctor id
+string get_doctor_id()
+{
+	string doctor_id;
+	cout<<"Enter Doctor Id : "<<endl;
+	cin>>hospital_id;
+	if(check_doctor_id(hospital_id)==1)
+	{
+		cout<<"Invalid Doctor Id"<<endl;
+		get_doctor_id();
+	}
+	else
+	return doctor_id;	
+}
+
