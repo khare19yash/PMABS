@@ -1,5 +1,6 @@
 void patient_ui1(string);
-void user_login()
+void inpatient_ui1(string);
+void user_login(int value)
 {
 string username;
 string password;
@@ -24,7 +25,16 @@ if(unique_username(username)==1)
 		continue;
 	}
 	fhandle.close();
-	patient_ui1(uhid);
+	if(value==1)
+	{
+		patient_ui1(uhid);
+
+	}
+	else if(value==2)
+	{
+		inpatient_ui1(uhid);
+	}
+	
 }
 /*if(check_username_password(username,password)==2)
 {

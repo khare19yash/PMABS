@@ -12,6 +12,7 @@ int choice;
 #include "login.cpp"
 #include "patient_ui1.cpp"
 #include "patient_ui2.cpp"
+#include "inpatient_ui1.cpp"
 int main(void)
 {	system("cls");
 	
@@ -38,7 +39,7 @@ int main(void)
 	case 2:
 		{
 			system("cls");
-			user_login();
+			user_login(choice);
 			break;
 		}
 				
@@ -55,10 +56,10 @@ int main(void)
 	default: //exit(0);*/
 }
 
-fstream f2;
+/*fstream f2;
 f2.open("counter.csv",ios::out);
 f2<<Patient::count;
-f2.close();
+f2.close();*/
 return 0;
 }
 
