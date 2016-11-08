@@ -1,7 +1,7 @@
 void patient_ui1(string);
 void update(string,int,string,string);
 //function to check username and password
-/*int check_username_password(string s, string p)
+int check_username_password(string s, string p)
 {
 	int flag=0;
 	string id,uname,pass;
@@ -10,7 +10,7 @@ void update(string,int,string,string);
 	while(fhandle)
 	{
 		getline(fhandle,id,',');
-		getline(fhandle,uname,' ,');
+		getline(fhandle,uname,',');
 		getline(fhandle,pass,'\n');
 		if(uname==s)//compare the username
 		{
@@ -22,7 +22,6 @@ void update(string,int,string,string);
 	}
 	if(flag==1)//if both strings are equal
 	{
-		//compare the passwords
 		if(pass==p)
 		return 0; 
 		else
@@ -32,7 +31,7 @@ void update(string,int,string,string);
 	{
 		return 2;
 	}
-}*/
+}
 
 
 //function to check if username already exists
@@ -1323,7 +1322,7 @@ void admin_login()
 	cin>>username;
 	cout<<"Password : "<<endl;
 	cin>>password;
-	/*flag=check_username_password(username,password);
+	flag=check_username_password(username,password);
 	switch(flag)
 	{
 		case 0:
@@ -1349,7 +1348,7 @@ void admin_login()
 		{
 			cout<<"Invalid Input"<<endl;
 		}
-	}*/
+	}
 	
 }
 
