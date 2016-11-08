@@ -39,7 +39,7 @@ int main(void)
 	case 2:
 		{
 			system("cls");
-			user_login(choice);
+			admin_login();
 			break;
 		}
 				

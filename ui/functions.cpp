@@ -1,18 +1,5 @@
 void patient_ui1(string);
-//void check_username_password(string,string);
-//login function
-/*void user_login()
-{
-string username;
-string password;
-cout<<"Username : "<<endl;
-cin>>username;
-cout<<"Password : "<<endl;
-cin>>password;
-check_username_password(username,password);
-}*/
-
-
+void update(string,int,string,string);
 //function to check username and password
 /*int check_username_password(string s, string p)
 {
@@ -25,36 +12,27 @@ check_username_password(username,password);
 		getline(fhandle,id,',');
 		getline(fhandle,uname,' ,');
 		getline(fhandle,pass,'\n');
-		if(uname.compare(s)==0)//compare the username
+		if(uname==s)//compare the username
 		{
 			flag=1;
 			break;
 		}
+		else
+		continue;
 	}
-//fhandle.seekg(o,ios::cur);
 	if(flag==1)//if both strings are equal
 	{
-		//getline(fhandle,pass)
 		//compare the passwords
-		/*if(pass.compare(p)==0)
-		{
-		
-			return 0;   //if password matches include patient_ui file
-		
-		}
+		if(pass==p)
+		return 0; 
 		else
-		{
-			return 1;
-		}*/
-		//return 0;	
-	//}	
-	/*else
+		return 1;
+	}	
+	else
 	{
 		return 2;
-	
-	}*/
-
-//}
+	}
+}*/
 
 
 //function to check if username already exists
@@ -170,6 +148,8 @@ void display_doctor_list(string s)
 	{
 		cout<<doctor_id<<"\t"<<doctor_name<<"\t"<<doctor_department<<"\t"<<doctor_timing<<endl;
 	}
+	else
+	continue;
 }
 }
 
@@ -225,7 +205,7 @@ string show_date()
 {
 	time_t now=time(0);
   struct tm * ltm=localtime(&now);
-  char day1[20],day2[20],day3[20],day4[20],day5[20],buffer[20];
+  char day1[20],day2[20],day3[20],day4[20],day5[20];
 
     ltm->tm_mday=ltm->tm_mday+1;
     strftime (day1,20,"%Y-%m-%d",ltm);
@@ -297,6 +277,8 @@ void book_appointment(string p,string q,string r,string s)
 	string hname,hid;
 	string did,dname,depart,timing,hid1;
 	string pid,pname,g,a,bgroup,phone,mail;
+	time_t now=time(0);
+	char *dt=ctime(&now);
 	char value;
 	cout<<"Confirm Appointment (y/n)"<<endl;
 	cin>>value;
@@ -354,7 +336,9 @@ void book_appointment(string p,string q,string r,string s)
 			cout<<"Hospital Name : "<<hname<<endl;
 			cout<<"Doctor Name : "<<dname<<endl;
 			cout<<"Appointment Date : "<<r<<endl;
+			cout<<"Booked on : "<<dt<<endl;
 			fhandle.open("appointments.csv",ios::app);
+			cin.ignore();
 			fhandle<<s<<","<<pname<<","<<hname<<","<<dname<<","<<r<<endl;
 			fhandle.close();
 			/*enter the patient details from outpatients in the respective 
@@ -456,6 +440,8 @@ void patient_details(string s)
 			{
 				break;
 			}
+			else
+			continue;
 
 		}
 		fhandle.close();
@@ -484,6 +470,8 @@ void patient_details(string s)
 			{
 				break;
 			}
+			else
+			continue;
 
 		}
 		fhandle.close();
@@ -512,6 +500,8 @@ void patient_details(string s)
 			{
 				break;
 			}
+			else 
+			continue;
 
 		}
 		fhandle.close();
@@ -540,6 +530,8 @@ void patient_details(string s)
 			{
 				break;
 			}
+			else
+			continue;
 
 		}
 		fhandle.close();
@@ -568,6 +560,8 @@ void patient_details(string s)
 			{
 				break;
 			}
+			else
+			continue;
 
 		}
 		fhandle.close();
@@ -596,6 +590,8 @@ void patient_details(string s)
 			{
 				break;
 			}
+			else
+			continue;
 
 		}
 		fhandle.close();
@@ -625,6 +621,8 @@ void patient_details(string s)
 			{
 				break;
 			}
+			else
+			continue;
 
 		}
 		fhandle.close();
@@ -656,14 +654,20 @@ int inpatient_details(string s)
 			getline(fhandle,phone,',');
 			getline(fhandle,mail,'\n');
 			if(s.compare(id)==0)
-			{
-				fhandle.close();
+			{				
 				flag=1;
-				return flag;		
+				break;		
 			}
-
+			else
+			continue;
 		}
-		//fhandle.close();
+		fhandle.close();
+		/*if(flag==1)
+		{
+			fhandle.close();
+			return 1;
+		}*/
+
 		//check in appollo patients details
 		fhandle.open("appollo_patientsdetail.csv",ios::in);
 		while(fhandle)
@@ -676,14 +680,21 @@ int inpatient_details(string s)
 			getline(fhandle,phone,',');
 			getline(fhandle,mail,'\n');
 			if(s.compare(id)==0)
-			{
-				fhandle.close();
+			{				
 				flag=2;
-				return flag;
+				break;
 			}
+			else
+			continue;
 
 		}
-		//fhandle.close();
+		fhandle.close();
+		/*if(flag==2)
+		{
+			fhandle.close();
+			return 2;
+		}*/
+		
 		//check in city hospital patients detail
 		fhandle.open("cityhospital_patientsdetail.csv",ios::in);
 		while(fhandle)
@@ -696,14 +707,21 @@ int inpatient_details(string s)
 			getline(fhandle,phone,',');
 			getline(fhandle,mail,'\n');
 			if(s.compare(id)==0)
-			{
-				fhandle.close();
+			{				
 				flag=3;
-				return flag;
+				break;
 			}
+			else
+			continue;
 
 		}
-		//fhandle.close();
+		fhandle.close();
+		/*if(flag==3)
+		{
+			fhandle.close();
+			return 3;
+		}*/
+	
 		//check in fortis patients details
 		fhandle.open("fortis_patientsdetail.csv",ios::in);
 		while(fhandle)
@@ -717,13 +735,19 @@ int inpatient_details(string s)
 			getline(fhandle,mail,'\n');
 			if(s.compare(id)==0)
 			{
-				fhandle.close();
 				flag=4;
-				return flag;
+				break;
 			}
+			else
+			continue;
 
 		}
 		fhandle.close();
+		/*if(flag==4)
+		{
+			fhandle.close();
+			return 4;
+		}*/
 		//check in kalinga patients details
 		fhandle.open("kalingahospital_patientsdetail.csv",ios::in);
 		while(fhandle)
@@ -737,13 +761,19 @@ int inpatient_details(string s)
 			getline(fhandle,mail,'\n');
 			if(s.compare(id)==0)
 			{
-				fhandle.close();
 				flag=5;
-				return flag;
+				break;			
 			}
-
+			else
+			continue;
 		}
-		//fhandle.close();
+		fhandle.close();
+		/*if(flag==5)
+		{
+			fhandle.close();
+			return 5;
+		}*/
+
 		//check in sum patients details
 		fhandle.open("sum_patientsdetail.csv",ios::in);
 		while(fhandle)
@@ -757,14 +787,570 @@ int inpatient_details(string s)
 			getline(fhandle,mail,'\n');
 			if(s.compare(id)==0)
 			{
-				fhandle.close();
 				flag=6;
-				return flag;
+				break;
 			}
+			else
+			continue;
 
 		}
-		return 0;
-		//fhandle.close();	
+		fhandle.close();
+	 	 if(flag==1)
+		 return 1;
+		 else if(flag==2)
+		 return 2;
+		 else if (flag==3)
+		 return 3;
+		 else if(flag==4)
+		 return 4;
+		 else if(flag==5)
+		 return 5;
+		 else if(flag==6)
+		 return 6;
+		 else
+		 return 0;
+		
+}
+
+//function to view appointment details
+void appointment_details(string s)
+{
+	fstream fhandle;
+	string id,name,hname,dname,date;
+	int flag=0;
+	fhandle.open("appointments.csv",ios::in);
+	while(fhandle)
+	{
+		getline(fhandle,id,',');
+		getline(fhandle,name,',');
+		getline(fhandle,hname,',');
+		getline(fhandle,dname,',');
+		getline(fhandle,date,'\n');
+		if(s.compare(id)==0)
+		{
+			flag=1;
+			break;
+		}
+		else
+		continue;
+	}
+	fhandle.close();
+	if(flag==1)
+	{
+			cout<<"Patient Name : "<<name<<endl;
+			cout<<"Patient Id : "<<id<<endl;
+			cout<<"Hospital Name : "<<hname<<endl;
+			cout<<"Doctor Name : "<<dname<<endl;
+			cout<<"Appointment Date : "<<date<<endl;
+	}
+	else
+	{
+		cout<<"No Appointments"<<endl;
+	}
+}
+
+//function to search patient id in appointments.csv file
+int search_appointment(string s)
+{
+	int flag=0;
+	string pid,name,hname,dname,adate;
+	fstream fhandle;
+	fhandle.open("appointments.csv",ios::in);
+	while(fhandle)
+	{
+		getline(fhandle,pid,',');
+		getline(fhandle,name,',');
+		getline(fhandle,hname,',');
+		getline(fhandle,dname,',');
+		getline(fhandle,adate,'\n');
+		if(s.compare(pid)==0)
+		{
+			flag=1;
+			break;
+		}
+		else
+		continue;
+	}
+	fhandle.close();
+	if(flag==1 && hname=="AIIMS Hospital")
+	return 1;
+	else if(flag==1 && hname=="APPOLLO Hospital")
+	return 2;
+	else if(flag==1 && hname=="CITY Hospital")
+	return 3;
+	else if(flag==1 && hname=="FORTIS Hospital")
+	return 4;
+	else if(flag==1 && hname=="KALINGA Hospital")
+	return 5;
+	else if(flag==1 && hname=="SUM Hospital")
+	return 6;
+	else
+	return 0;
+}
+
+//function to update patient details
+void update_personal_info(string s)
+{
+	string uhid=s,filename,detail;
+	int field,flag=0;
+	cout<<"Enter the Field Number You Want to Update"<<endl;
+	cin>>field;
+	flag=search_appointment(uhid);
+	switch(flag)
+	{
+		case 1:
+		{
+			cout<<"Enter New Detail"<<endl;
+			cin.ignore();
+			getline(cin,detail);
+			filename="AIIMS_patientsdetail.csv";
+			update(uhid,field,filename,detail);
+			filename="outpatient.csv";
+			update(uhid,field,filename,detail);
+			break;
+		}
+		case 2:
+		{
+			cout<<"Enter New Detail"<<endl;
+			cin.ignore();
+			getline(cin,detail);
+			filename="appollo_patientsdetail.csv";
+			update(uhid,field,filename,detail);
+			filename="outpatient.csv";
+			update(uhid,field,filename,detail);
+			break;				
+		}
+		case 3:
+		{
+			cout<<"Enter New Detail"<<endl;
+			cin.ignore();
+			getline(cin,detail);
+			filename="cityhospital_patientsdetail.csv";
+			update(uhid,field,filename,detail);
+			filename="outpatient.csv";
+			update(uhid,field,filename,detail);
+			break;
+		}
+		case 4:
+		{
+			cout<<"Enter New Detail"<<endl;
+			cin.ignore();
+			getline(cin,detail);
+			filename="fortis_patientsdetail.csv";
+			update(uhid,field,filename,detail);
+			filename="outpatient.csv";
+			update(uhid,field,filename,detail);
+			break;
+		}
+		case 5:
+		{
+			cout<<"Enter New Detail"<<endl;
+			cin.ignore();
+			getline(cin,detail);
+			filename="kalingahospital_patientsdetail.csv";
+			update(uhid,field,filename,detail);
+			filename="outpatient.csv";
+			update(uhid,field,filename,detail);
+			break;
+		}
+		case 6:
+		{
+			cout<<"Enter New Detail"<<endl;
+			cin.ignore();
+			getline(cin,detail);
+			filename="sum_patientsdetail.csv";
+			update(uhid,field,filename,detail);
+			filename="outpatient.csv";
+			update(uhid,field,filename,detail);
+			break;
+		}
+		default:
+		{
+			cout<<"Enter New Detail"<<endl;
+			cin.ignore();
+			getline(cin,detail);
+			filename="outpatient.csv";
+			update(uhid,field,filename,detail);
+		}
+	}
+
+}
+
+//update function
+void update(string p,int q,string r,string t)
+{
+	int flag=q;
+	string detail=t;
+	char *filename = new char[r.length() + 1];
+	strcpy(filename, r.c_str());
+	string str="sample.csv";
+	char *sample = new char[str.length() + 1];
+	strcpy(sample, str.c_str());
+	cout<<filename<<endl;
+	cout<<sample<<endl;
+	cout<<p<<endl;
+	cout<<q<<endl;
+	cout<<r<<endl;
+	string id,name,g,age,bgroup,phone,mail;
+	fstream fhandle,fhandle1;
+	fhandle.open(filename,ios::in);
+	fhandle1.open(sample,ios::out);
+	/*cout<<"Enter New Detail"<<endl;
+	cin.ignore();
+	getline(cin,detail);*/
+	switch(flag)
+	{
+		case 1:
+		{
+		getline(fhandle,id,',');
+		getline(fhandle,name,',');
+		getline(fhandle,g,',');
+		getline(fhandle,age,',');
+		getline(fhandle,bgroup,',');
+		getline(fhandle,phone,',');
+		getline(fhandle,mail,'\n');
+	while(!fhandle.eof())
+	{
+		if(p==id)
+		{
+			name=detail;
+			fhandle1<<id<<","<<name<<","<<g<<","<<age<<","<<bgroup<<","<<phone<<","<<mail<<endl;
+		}
+		else
+		{
+			fhandle1<<id<<","<<name<<","<<g<<","<<age<<","<<bgroup<<","<<phone<<","<<mail<<endl;
+		}
+		getline(fhandle,id,',');
+		getline(fhandle,name,',');
+		getline(fhandle,g,',');
+		getline(fhandle,age,',');
+		getline(fhandle,bgroup,',');
+		getline(fhandle,phone,',');
+		getline(fhandle,mail,'\n');		
+		}
+		break;
+	}
+	case 2:
+	{
+		getline(fhandle,id,',');
+		getline(fhandle,name,',');
+		getline(fhandle,g,',');
+		getline(fhandle,age,',');
+		getline(fhandle,bgroup,',');
+		getline(fhandle,phone,',');
+		getline(fhandle,mail,'\n');
+	while(!fhandle.eof())
+	{
+		if(p==id)
+		{
+			g=detail;
+			fhandle1<<id<<","<<name<<","<<g<<","<<age<<","<<bgroup<<","<<phone<<","<<mail<<endl;
+		}
+		else
+		{
+			fhandle1<<id<<","<<name<<","<<g<<","<<age<<","<<bgroup<<","<<phone<<","<<mail<<endl;
+		}
+		getline(fhandle,id,',');
+		getline(fhandle,name,',');
+		getline(fhandle,g,',');
+		getline(fhandle,age,',');
+		getline(fhandle,bgroup,',');
+		getline(fhandle,phone,',');
+		getline(fhandle,mail,'\n');		
+	}
+	break;
+	}
+	case 3:
+	{
+		getline(fhandle,id,',');
+		getline(fhandle,name,',');
+		getline(fhandle,g,',');
+		getline(fhandle,age,',');
+		getline(fhandle,bgroup,',');
+		getline(fhandle,phone,',');
+		getline(fhandle,mail,'\n');
+	while(!fhandle.eof())
+	{
+		if(p==id)
+		{
+			age=detail;
+			fhandle1<<id<<","<<name<<","<<g<<","<<age<<","<<bgroup<<","<<phone<<","<<mail<<endl;
+		}
+		else
+		{
+			fhandle1<<id<<","<<name<<","<<g<<","<<age<<","<<bgroup<<","<<phone<<","<<mail<<endl;
+		}
+		getline(fhandle,id,',');
+		getline(fhandle,name,',');
+		getline(fhandle,g,',');
+		getline(fhandle,age,',');
+		getline(fhandle,bgroup,',');
+		getline(fhandle,phone,',');
+		getline(fhandle,mail,'\n');		
+	}
+	break;
+	}
+	case 4:
+	{
+		getline(fhandle,id,',');
+		getline(fhandle,name,',');
+		getline(fhandle,g,',');
+		getline(fhandle,age,',');
+		getline(fhandle,bgroup,',');
+		getline(fhandle,phone,',');
+		getline(fhandle,mail,'\n');
+	while(!fhandle.eof())
+	{
+		if(p==id)
+		{
+			bgroup=detail;
+			fhandle1<<id<<","<<name<<","<<g<<","<<age<<","<<bgroup<<","<<phone<<","<<mail<<endl;
+		}
+		else
+		{
+			fhandle1<<id<<","<<name<<","<<g<<","<<age<<","<<bgroup<<","<<phone<<","<<mail<<endl;
+		}
+		getline(fhandle,id,',');
+		getline(fhandle,name,',');
+		getline(fhandle,g,',');
+		getline(fhandle,age,',');
+		getline(fhandle,bgroup,',');
+		getline(fhandle,phone,',');
+		getline(fhandle,mail,'\n');		
+	}
+	break;
+	}
+	case 5:
+	{
+		getline(fhandle,id,',');
+		getline(fhandle,name,',');
+		getline(fhandle,g,',');
+		getline(fhandle,age,',');
+		getline(fhandle,bgroup,',');
+		getline(fhandle,phone,',');
+		getline(fhandle,mail,'\n');
+	while(!fhandle.eof())
+	{
+		if(p==id)
+		{
+			phone=detail;
+			fhandle1<<id<<","<<name<<","<<g<<","<<age<<","<<bgroup<<","<<phone<<","<<mail<<endl;
+		}
+		else
+		{
+			fhandle1<<id<<","<<name<<","<<g<<","<<age<<","<<bgroup<<","<<phone<<","<<mail<<endl;
+		}
+		getline(fhandle,id,',');
+		getline(fhandle,name,',');
+		getline(fhandle,g,',');
+		getline(fhandle,age,',');
+		getline(fhandle,bgroup,',');
+		getline(fhandle,phone,',');
+		getline(fhandle,mail,'\n');		
+	}
+	break;
+	}
+	case 6:
+	{
+		getline(fhandle,id,',');
+		getline(fhandle,name,',');
+		getline(fhandle,g,',');
+		getline(fhandle,age,',');
+		getline(fhandle,bgroup,',');
+		getline(fhandle,phone,',');
+		getline(fhandle,mail,'\n');
+	while(!fhandle.eof())
+	{
+		if(p==id)
+		{
+			mail=detail;
+			fhandle1<<id<<","<<name<<","<<g<<","<<age<<","<<bgroup<<","<<phone<<","<<mail<<endl;
+		}
+		else
+		{
+			fhandle1<<id<<","<<name<<","<<g<<","<<age<<","<<bgroup<<","<<phone<<","<<mail<<endl;
+		}
+		getline(fhandle,id,',');
+		getline(fhandle,name,',');
+		getline(fhandle,g,',');
+		getline(fhandle,age,',');
+		getline(fhandle,bgroup,',');
+		getline(fhandle,phone,',');
+		getline(fhandle,mail,'\n');		
+	}
+	break;
+	}
+	default:
+	{
+		cout<<"Nothing to update"<<endl;
+	}
+	}
+	fhandle.close();
+	fhandle1.close();
+	remove(filename);
+	rename(sample,filename);
+}
+
+//function to view doctor details
+void display_doctor_details(string s)
+{
+	string did,dname,depart,timing,hid;
+	fstream fhandle;
+	fhandle.open("doctorslist.csv",ios::in);
+	while(fhandle)
+	{
+		getline(fhandle,did,',');
+		getline(fhandle,dname,',');
+		getline(fhandle,depart,',');
+		getline(fhandle,timing,',');
+		getline(fhandle,hid,'\n');
+		if(s.compare(did)==0)
+		{
+			cout<<"Name : "<<dname<<endl;
+			cout<<"Id : "<<did<<endl;
+			cout<<"Department : "<<depart<<endl;
+			cout<<"Schedule : "<<timing<<endl;
+			cout<<"Hospital Id : "<<hid<<endl;
+		}
+		else
+		continue;
+
+	}
+
+}
+
+//function to update doctor id
+void update_doctor_details(string s,int field,string detail)
+{
+	string id,dname,depart,timing,hid;
+	fstream fhandle,fhandle1;
+	fhandle.open("doctorlist.csv",ios::in);
+	fhandle1.open("temp.csv",ios::out);
+	switch(field)
+	{
+		case 1:
+		{
+			getline(fhandle,id,',');
+			getline(fhandle,dname,',');
+			getline(fhandle,depart,',');
+			getline(fhandle,timing,',');
+			getline(fhandle,hid,'\n');
+			while(fhandle)
+			{
+				if(s.compare(id)==0)
+				{
+					dname=detail;
+					fhandle1<<id<<","<<dname<<","<<depart<<","<<timing<<","<<hid<<endl;
+				}
+				else
+				{
+					fhandle1<<id<<","<<dname<<","<<depart<<","<<timing<<","<<hid<<endl;
+				}
+				getline(fhandle,id,',');
+				getline(fhandle,dname,',');
+				getline(fhandle,depart,',');
+				getline(fhandle,timing,',');
+				getline(fhandle,hid,'\n');
+			}
+		}
+		case 2:
+		{
+			getline(fhandle,id,',');
+			getline(fhandle,dname,',');
+			getline(fhandle,depart,',');
+			getline(fhandle,timing,',');
+			getline(fhandle,hid,'\n');
+			while(fhandle)
+			{
+				if(s.compare(id)==0)
+				{
+					depart=detail;
+					fhandle1<<id<<","<<dname<<","<<depart<<","<<timing<<","<<hid<<endl;
+				}
+				else
+				{
+					fhandle1<<id<<","<<dname<<","<<depart<<","<<timing<<","<<hid<<endl;
+				}
+				getline(fhandle,id,',');
+				getline(fhandle,dname,',');
+				getline(fhandle,depart,',');
+				getline(fhandle,timing,',');
+				getline(fhandle,hid,'\n');
+
+			}
+			
+		}
+		case 3:
+		{
+			getline(fhandle,id,',');
+			getline(fhandle,dname,',');
+			getline(fhandle,depart,',');
+			getline(fhandle,timing,',');
+			getline(fhandle,hid,'\n');
+			while(fhandle)
+			{
+				if(s.compare(id)==0)
+				{
+					timing=detail;
+					fhandle1<<id<<","<<dname<<","<<depart<<","<<timing<<","<<hid<<endl;
+				}
+				else
+				{
+					fhandle1<<id<<","<<dname<<","<<depart<<","<<timing<<","<<hid<<endl;
+				}
+				getline(fhandle,id,',');
+				getline(fhandle,dname,',');
+				getline(fhandle,depart,',');
+				getline(fhandle,timing,',');
+				getline(fhandle,hid,'\n');
+			}
+		}
+		default:
+		{
+			cout<<"Invalid Input"<<endl;
+		}
+		
+	}	
+}
+
+//function for admin login
+void admin_login()
+{
+	int flag;
+	string username;
+	string password;
+	cout<<"Username : "<<endl;
+	cin>>username;
+	cout<<"Password : "<<endl;
+	cin>>password;
+	/*flag=check_username_password(username,password);
+	switch(flag)
+	{
+		case 0:
+		{
+			#include "admin_ui1.cpp"
+			break;
+		}
+		case 1:
+		{
+			system("cls");
+			cout<<"Invalid Password"<<endl;
+			admin_login();
+			break;
+		}
+		case 2:
+		{
+			system("cls");
+			cout<<"Invalid Username"<<endl;
+			admin_login();
+			break;
+		}
+		default:
+		{
+			cout<<"Invalid Input"<<endl;
+		}
+	}*/
+	
 }
 
 		

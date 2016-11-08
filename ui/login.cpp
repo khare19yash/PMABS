@@ -1,5 +1,6 @@
 void patient_ui1(string);
 void inpatient_ui1(string);
+int check_username_password(string,string);
 void user_login(int value)
 {
 string username;

@@ -18,7 +18,7 @@ fhandle.close();
 hospital_id=get_hospital_id();
 display_doctor_list(hospital_id);
 doctor_id=get_doctor_id();
-cout<<"You can book appointment for these dates : "<<uhid<<endl;
+cout<<"You can book appointment for these dates : "<<endl;
 appointment_date=show_date();
 book_appointment(hospital_id,doctor_id,appointment_date,uhid);
 

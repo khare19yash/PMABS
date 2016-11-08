@@ -14,7 +14,6 @@ switch(choice)
     case 1:
     {
         flag=inpatient_details(uhid);
-        cout<<flag<<endl;
     switch(flag)
     {
         case 1:
@@ -191,5 +190,4 @@ switch(choice)
     }
     
 }
-cout<<flag;
 }
