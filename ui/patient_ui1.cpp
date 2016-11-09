@@ -2,7 +2,10 @@ void patient_ui2(string);
 void patient_ui1(string s)
 {
 	string uhid=s,pid,hid,did,adate;
+	char ch='y';
 	int flag=0;
+	while(ch=='y')
+	{
 	system("cls");
 cout<<"1. Book Appointment"<<endl;
 cout<<"2. Cancel Appointment"<<endl;
@@ -30,6 +33,15 @@ switch(choice)
 	}
 	case 2:
 	{
+		flag=search_appointment(uhid);
+		if(flag==0)
+		cout<<"No Appointments To Cancel"<<endl;
+		else
+		{
+			cancel_appointment(uhid);
+			cout<<"Appointment Successfully Canceled"<<endl;
+		}
+		
 		break;
 	}
 	case 3:
@@ -42,6 +54,7 @@ switch(choice)
 	{
 		system("cls");
 		appointment_details(uhid);
+
 		break;
 	}
 	case 5:
@@ -64,8 +77,15 @@ switch(choice)
 		#include "patient_ui.cpp"
 		break;
 	}
+	default:
+	{
+		cout<<"Invalid Input"<<endl;
+		break;
+	}
 }
-
+cout<<"to continue press y"<<endl;
+cin>>ch;
+	}
 
 }
 

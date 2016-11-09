@@ -1,6 +1,5 @@
 void patient_ui1(string);
 void inpatient_ui1(string);
-int check_username_password(string,string);
 void user_login(int value)
 {
 string username;
@@ -9,7 +8,6 @@ cout<<"Username : "<<endl;
 cin>>username;
 cout<<"Password : "<<endl;
 cin>>password;
-//check_username_password(username,password);
 if(unique_username(username)==1)
 {
 	string uhid,uname,pass;
@@ -26,29 +24,29 @@ if(unique_username(username)==1)
 		continue;
 	}
 	fhandle.close();
-	if(value==1)
+	if(password.compare(pass)==0)
 	{
-		patient_ui1(uhid);
+		if(value==1)
+		{
+			patient_ui1(uhid);
 
+		}
+		else if(value==2)
+		{
+			inpatient_ui1(uhid);
+		}
 	}
-	else if(value==2)
+	else
 	{
-		inpatient_ui1(uhid);
-	}
-	
+		system("cls");
+		cout<<"Invalid Password"<<endl;
+		user_login(value);
+	}	
 }
-/*if(check_username_password(username,password)==2)
+else
 {
+	system("cls");
 	cout<<"Invalid Username"<<endl;
-	user_login();
+	user_login(value);
 }
-else if(check_username_password(username,password)==1)
-{
-	cout<<"Invalid Password"<<endl;
-	user_login();
-}*/
-/*if(check_username_password(username,password)==0)
-{
-	#include "patient_ui1.cpp"
-}*/
 }

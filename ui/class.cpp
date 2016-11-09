@@ -1,17 +1,16 @@
 
 //create a base class hospital
-/*class Hospital
+class Hospital
 {
 public:
 	string hospital_name;
 	string hospital_id;
-	virtual void set_value(){};
-};*/
-
-
+	virtual void set_value(){}
+	virtual void insert_into_file(){}
+};
 
 //create a patient class
-class Patient
+class Patient:public Hospital
 {
 	string patient_name;
 	long long int phone_number;
@@ -33,7 +32,7 @@ public:
 		count++; 
 	}
 	void set_value();
-	friend void insert_username_password(Patient ob);
+	friend void insert_username_password(Patient* ob);
 	void insert_into_file();
 };
 void Patient::set_value()
