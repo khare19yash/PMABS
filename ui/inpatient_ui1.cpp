@@ -14,11 +14,15 @@ switch(choice)
     case 1:
     {
         inpatient_details_print(uhid);
+        cout<<endl;
+        cout<<"hospital details"<<endl;
+        print_inpatient_details(uhid);
         break;
     }
     case 2:
     {
         #include "patient_ui.cpp"
+        break;
     }
 }
     

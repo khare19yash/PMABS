@@ -1,16 +1,5 @@
-
-//create a base class hospital
-class Hospital
-{
-public:
-	string hospital_name;
-	string hospital_id;
-	virtual void set_value(){}
-	virtual void insert_into_file(){}
-};
-
 //create a patient class
-class Patient:public Hospital
+class Patient
 {
 	string patient_name;
 	long long int phone_number;
@@ -63,17 +52,6 @@ void Patient::insert_into_file()
 	file<<patient_id<<","<<patient_name<<","<<gender<<","<<age<<","<<blood_group<<","<<phone_number<<","<<email_id<<endl;
 	file.close();
 }
-
-//doctor class derived from hospital contains all details about doctors
-/*class Doctor:public Hospital
-{
-	int room_number;
-	string department;
-	string timings;
-	string days;
-	string username;
-	string password;
-};*/
 
 int Patient::count;
 

@@ -13,12 +13,14 @@ while(ch=='y')
 		case '1':
 		{
 			system("cls");
+			choice=1;
 			user_login(choice);
 			break;
 		}
 		case '2':
 		{
 			system("cls");
+			choice=2;
 			user_login(choice);
 			break;
 		}

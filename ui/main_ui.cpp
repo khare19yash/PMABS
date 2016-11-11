@@ -21,6 +21,9 @@ int main(void)
 	while(1)
 	{
 		system("cls");
+		cout<<" Patient Monitoring and Appointment Booking System (PMABS)"<<endl;
+		cout<<endl;
+		cout<<endl;
 	cout<<"1. PATIENT LOGIN"<<endl;
 	cout<<"2. ADMIN LOGIN"<<endl;
 	cout<<"3. DOCTOR LOGIN"<<endl;	
@@ -53,11 +56,16 @@ int main(void)
 		}
 			
 			
-	/*case 4://FAQs
+	case 4: 
+	{
+		system("cls");
+		read_faq();
 			break;
+	}
 			
-	case 5:	//contact details
+	/*case 5:	//contact details
 			break;*/
+
 	case 6: exit(0);
 	default: break;
 	}

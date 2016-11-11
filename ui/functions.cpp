@@ -1349,9 +1349,9 @@ void inpatient_details_print(string s)
 }
 
 //function to update inpatient details
-/*int search_inpatient_details(string s)
+int print_inpatient_details(string s)
 {
-	string id,room_num,bed_num,filename="";
+	string id,room_num,bed_num;
 	fstream fhandle;
 	fhandle.open("AIIMS_roombed.csv",ios::in);
 	while(fhandle)
@@ -1361,7 +1361,8 @@ void inpatient_details_print(string s)
 		getline(fhandle,bed_num,'\n');
 		if(s.compare(id)==0)
 		{
-			filename="AIIMS_roombed.csv";
+			cout<<"Room Number : "<<room_num<<endl;
+			cout<<"Bed Number : "<<bed_num<<endl;
 			break;
 		}
 		else
@@ -1376,7 +1377,8 @@ void inpatient_details_print(string s)
 		getline(fhandle,bed_num,'\n');
 		if(s.compare(id)==0)
 		{
-			filename="appollo_roombed.csv";
+			cout<<"Room Number : "<<room_num<<endl;
+			cout<<"Bed Number : "<<bed_num<<endl;
 			break;
 		}
 		else
@@ -1391,7 +1393,8 @@ void inpatient_details_print(string s)
 		getline(fhandle,bed_num,'\n');
 		if(s.compare(id)==0)
 		{
-			filename="cityhospital_roombed.csv";
+			cout<<"Room Number : "<<room_num<<endl;
+			cout<<"Bed Number : "<<bed_num<<endl;
 			break;
 		}
 		else
@@ -1406,7 +1409,8 @@ void inpatient_details_print(string s)
 		getline(fhandle,bed_num,'\n');
 		if(s.compare(id)==0)
 		{
-			filename="fortis_roombed.csv";
+			cout<<"Room Number : "<<room_num<<endl;
+			cout<<"Bed Number : "<<bed_num<<endl;
 			break;
 		}
 		else
@@ -1421,7 +1425,8 @@ void inpatient_details_print(string s)
 		getline(fhandle,bed_num,'\n');
 		if(s.compare(id)==0)
 		{
-			filename="kalinga_roombed.csv";
+			cout<<"Room Number : "<<room_num<<endl;
+			cout<<"Bed Number : "<<bed_num<<endl;
 			break;
 		}
 		else
@@ -1436,46 +1441,20 @@ void inpatient_details_print(string s)
 		getline(fhandle,bed_num,'\n');
 		if(s.compare(id)==0)
 		{
-			filename="sum_roombed.csv";
+			cout<<"Room Number : "<<room_num<<endl;
+			cout<<"Bed Number : "<<bed_num<<endl;
 			break;
 		}
 		else
 		continue;
 	}
 	fhandle.close();
-	return 
-	filename;
-}*/
+}
 //function to update inpatient detail
 /*void update_inpatient_details(string s,string p )
 {
-	int flag;
-	string detail=p;
-	string filename,id,room_num,bed_num;
-	filename=search_inpatient_details(s);
-	char *file = new char[filename.length() + 1];
-	strcpy(file, filename.c_str());
-	fstream fhandle;
-	switch(flag)
-	{
-		case 1:
-		{
-			fhandle.open("sum_roombed.csv",ios::in);
-	while(fhandle)
-	{
-		getline(fhandle,id,',');
-		getline(fhandle,room_num,',');
-		getline(fhandle,bed_num,'\n');
-		if(s.compare(id)==0)
-		{
-		}
-		else
-		
-	}
-		}
-	}
-
-}	*/	
+	fstream fhandle,
+}*/
 
 //function to cancel appointment
 void cancel_appointment(string s)
@@ -1544,5 +1523,21 @@ void doctor_login()
 		system("cls");
 		cout<<"Invalid Username"<<endl;
 		doctor_login();
+	}
+}
+//function to read faq
+void read_faq()
+{
+	string q,a;
+	fstream fhandle;
+	fhandle.open("faq.csv",ios::in);
+	getline(fhandle,q,',');
+	getline(fhandle,a,'\n');
+	while(fhandle)
+	{
+		cout<<"Q--->"<<q<<endl;
+		cout<<"A--->"<<a<<endl;
+		getline(fhandle,q,',');
+		getline(fhandle,a,'\n');
 	}
 }
